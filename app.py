@@ -8,12 +8,12 @@ import os
 
 # ─── Page Setup ───────────────────────────
 st.set_page_config(
-    page_title="Fire Detection Intelligence Engine",
+    page_title="Wildfire Risk Intelligence Engine",
     page_icon="🔥",
     layout="wide"
 )
 
-st.title("🔥 Fire Detection Intelligence Engine")
+st.title("🔥 Wildfire Risk Intelligence Engine")
 st.markdown("**Dataset:** NASA VIIRS SNPP Fire Archive | **Stack:** Polars · Pandas · NumPy · Matplotlib")
 st.markdown("---")
 
@@ -233,4 +233,4 @@ st.download_button(
 )
 
 st.markdown("---")
-st.markdown("**Project:** Fire Detection Intelligence Engine | **Dataset:** NASA VIIRS SNPP | **Stack:** Polars · Pandas · NumPy · Matplotlib")
+st.markdown("**Project:** Wildfire Risk Intelligence Engine | **Dataset:** NASA VIIRS SNPP | **Stack:** Polars · Pandas · NumPy · Matplotlib")
