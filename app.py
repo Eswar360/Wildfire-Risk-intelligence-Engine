@@ -31,15 +31,17 @@ def load_data(file):
 st.sidebar.header("📁 Upload Fire CSV")
 uploaded_file = st.sidebar.file_uploader("Choose a VIIRS/MODIS fire CSV", type=["csv"])
 
+DATA_URL = DATA_URL = "https://drive.google.com/uc?export=download&confirm=t&id=1_rsKmmUJdjglEHi_Tk8c_Z7zuVC065bD"
+DEFAULT_PATH = "fire_archive_SV-C2_761163.csv"
+
 if uploaded_file is None:
-    default_path = "fire_archive_SV-C2_761163.csv"
-    if os.path.exists(default_path):
-        with open(default_path, "rb") as f:
-            df = load_data(f)
-        st.info(f"Loaded default file: `{default_path}`")
-    else:
-        st.warning("👈 Please upload your fire archive CSV from the sidebar.")
-        st.stop()
+    if not os.path.exists(DEFAULT_PATH):
+        import urllib.request
+        with st.spinner("Downloading dataset for first time..."):
+            urllib.request.urlretrieve(DATA_URL, DEFAULT_PATH)
+    with open(DEFAULT_PATH, "rb") as f:
+        df = load_data(f)
+    st.info("Loaded default NASA VIIRS dataset")
 else:
     df = load_data(uploaded_file)
     st.success(f"Loaded: `{uploaded_file.name}` — {df.shape[0]:,} fire detections")
