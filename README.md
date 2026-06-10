@@ -1,4 +1,4 @@
-# 🔥 Fire Detection Intelligence Engine
+# 🔥 Wildfire Risk Intelligence Engine
 
 A Streamlit dashboard for analyzing NASA VIIRS satellite fire detection data. Upload any VIIRS/MODIS fire archive CSV and get instant visual intelligence on fire hotspots, brightness temperatures, radiative power, and temporal trends.
 
