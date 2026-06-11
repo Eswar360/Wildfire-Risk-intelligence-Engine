@@ -55,15 +55,14 @@ def load_data(path: str) -> pd.DataFrame:
 
 
 # ─── Locate default CSV ───────────────────
+import gdown
+
 DEFAULT_CSV = "fire_archive_SV-C2_761163.csv"
+DRIVE_URL = "https://drive.google.com/uc?id=1_rsKmmUJdjglEHi_Tk8c_Z7zuVC065bD"
 
 if not os.path.exists(DEFAULT_CSV):
-    st.error(
-        f"Default data file **`{DEFAULT_CSV}`** not found in the working directory.\n\n"
-        "Place your NASA FIRMS VIIRS/MODIS fire archive CSV in the same folder as "
-        "`app.py` and rename it to `fire_archive_SV-C2_761163.csv`, then refresh."
-    )
-    st.stop()
+    with st.spinner("Downloading fire data from Google Drive..."):
+        gdown.download(DRIVE_URL, DEFAULT_CSV, quiet=False)
 
 df = load_data(DEFAULT_CSV)
 st.info(f"Loaded: `{DEFAULT_CSV}` — **{len(df):,}** fire detections")
